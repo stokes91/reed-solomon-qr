@@ -1,0 +1,31 @@
+{
+  "name": "reed-solomon-qr",
+  "version": "1.0.0",
+  "description": "Reed Solomon decoder for QR Codes - JavaScript implementation",
+  "main": "main.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "node examples/test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stokes91/reed-solomon-qr.git"
+  },
+  "keywords": [
+    "Reed",
+    "Solomon",
+    "Error",
+    "Correction",
+    "QR",
+    "Code"
+  ],
+  "author": "Alexander Stokes",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/stokes91/reed-solomon-qr/issues"
+  },
+  "homepage": "https://github.com/stokes91/reed-solomon-qr#readme"
+}
