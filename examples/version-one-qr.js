@@ -14,11 +14,35 @@
    limitations under the License.
  */
 
-const BLOCKS_LENGTH = 255;
-const BLOCKS_DATA = 223;
-const ERROR_BLOCKS_COUNT = 15;
+const BLOCKS_LENGTH = 26;
+const BLOCKS_DATA = 10;
+const ERROR_BLOCKS_COUNT = 7;
 
-const crypto = require('crypto');
+const AlphaNumeric = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:'.split('');
+
+function AlphaNumericToBuffer(data) {
+
+  const blocks = Buffer.alloc(BLOCKS_DATA);
+
+  const codes = [];
+  for (let i = 0; i < 8; i += 2) {
+    codes.push(AlphaNumeric.indexOf(data[i]) * 45 + AlphaNumeric.indexOf(data[i + 1]));
+  }
+
+  blocks.writeUInt8(0x20, 0);
+  blocks.writeUInt8(0x40 + (codes[0] >>> 8), 1);
+  blocks.writeUInt8((codes[0] & 0xFF), 2);
+  blocks.writeUInt8((codes[1] >>> 3), 3);
+  blocks.writeUInt8(((codes[1] << 5) & 0xFF) + (codes[2] >>> 6), 4);
+  blocks.writeUInt8(((codes[2] << 2) & 0xFF) + (codes[3] >>> 9), 5);
+  blocks.writeUInt8((codes[3] >>> 1) & 0xFF, 6);
+  blocks.writeUInt8(((codes[3] << 7) & 0xFF), 7);
+  blocks.writeUInt8(0xEC, 8);
+  blocks.writeUInt8(0x00, 9);
+
+  return blocks;
+}
+
 
 const ReedSolomonDecoder = require('../main').ReedSolomonDecoder;
 
@@ -31,9 +55,14 @@ let verifiedCount = 0;
 let repairedCount = 0;
 
 
-for (let l = 5500; l--;) {
+for (let l = 100000; l--;) {
 
-  const buffer = crypto.randomBytes(BLOCKS_DATA);
+  const data = new Array(8);
+  for (let i = 0; i < 8; i++) {
+    data[i] = AlphaNumeric[Math.floor(Math.random() * 45)];
+  }
+
+  const buffer = AlphaNumericToBuffer(data.join(''));
   const array = new Array(buffer.byteLength);
   for (let l = buffer.byteLength; l--;) {
     array[l] = (buffer.readUInt8(l)) & 0xff;
