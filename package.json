@@ -1,6 +1,6 @@
 {
   "name": "reed-solomon-qr",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Reed Solomon decoder (and encoder) for QR Codes - JavaScript implementation",
   "main": "main.js",
   "directories": {
