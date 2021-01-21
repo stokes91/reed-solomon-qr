@@ -27,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/stokes91/reed-solomon-qr/issues"
   },
-  "homepage": "https://github.com/stokes91/reed-solomon-qr#readme"
+  "homepage": "https://github.com/stokes91/reed-solomon-qr#readme",
+  "dependencies": {
+    "rs-finite-field": "^2.0.0"
+  }
 }

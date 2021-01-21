@@ -12,10 +12,6 @@ Try out examples/version-one-qr to see how fast it is on your machine. A fairly 
 
 The code is written in a way that minimizes the use of tiny performance boosts in favor of clarity. It is designed to accept garbage data and not throw errors, but rather return a true on failure, fals-y if the buffer was repaired, or false if already pristine before decode.
 
-## Zero dependencies
-
-It's just half a thousand lines of clear, readable, code.
-
 ## Also Free
 
 Licensed under Apache 2.0
