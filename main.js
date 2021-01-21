@@ -14,6 +14,6 @@
    limitations under the License.
 */
 
-const FiniteField = require('finite-field');
+const FiniteField = require('rs-finite-field');
 
 module.exports = FiniteField(0x100, 0x12D, 1);
