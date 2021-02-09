@@ -16,4 +16,4 @@
 
 const FiniteField = require('rs-finite-field');
 
-module.exports = FiniteField(0x100, 0x12D, 1);
+module.exports = FiniteField(0x100, 0x11D, 1);
